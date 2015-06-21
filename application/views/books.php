@@ -58,96 +58,31 @@
     <div class="container">
         <h2 class="header text_b" id="category"><?php echo $category; ?></h2>
         <div class="row">
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project1.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project2.jpeg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project3.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project4.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project5.png">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m4 l4">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator" src="../img/project6.jpeg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Book Title <i class="mdi-navigation-more-vert right"></i></span>
-                        <p><a>Price 500 points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Book Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Book Description Comes Here</p>
-                    </div>
-                </div>
-            </div>
+        <?php
+        	if(empty($books)) {
+        		echo "<center><h4>Sorry !! There is no book in this category.</h4></center>";
+        	}
+        	foreach ($books as $book) {
+        ?>
+	        	<div class="col s12 m4 l4">
+	                <div class="card">
+	                    <div class="card-image waves-effect waves-block waves-light">
+	                        <img class="activator" src="../img/project1.jpg">
+	                    </div>
+	                    <div class="card-content">
+	                        <span class="card-title activator grey-text text-darken-4"> <?php echo $book->title; ?> <i class="mdi-navigation-more-vert right"></i></span>
+	                        <p><a>Price <?php echo $book->price; ?> points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
+	                    </div>
+	                    <div class="card-reveal">
+	                        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?> <i class="mdi-navigation-close right"></i></span>
+	                        <p><?php echo $book->description; ?> </p>
+	                    </div>
+	                </div>
+	            </div>
+        <?php
+        	}
+        ?>
+
         </div>
     </div>
 </div>

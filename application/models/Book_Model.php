@@ -25,11 +25,11 @@ class Book_Model extends CI_Model {
 		return $query->result();
 	}
 
-	public function get_books_in_category()
+	public function get_books_in_category($id)
 	{
 		$this->db->from('book');
 		$this->db->join('book_category', 'book_category.book_id = book.id');
-		$this->db->where('category_id', $this->input->get_post('id'));
+		$this->db->where('category_id', $id);
 		$query = $this->db->get();
 		return $query->result();
 	}
