@@ -103,19 +103,13 @@
                         <img class="activator" src="../img/avatar1.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Flash <br/>
+                        <span class="card-title activator grey-text text-darken-4">Nitesh Gupta<br/>
                             <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
                         <p>
-                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
+                            <a class="blue-text text-lighten-2" href="https://www.facebook.com/nitesh.nit.gupta">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
-                            <a class="blue-text text-lighten-2" href="https://twitter.com/im_joash">
-                                <i class="fa fa-twitter-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://plus.google.com/u/0/+JoashPereira">
-                                <i class="fa fa-google-plus-square"></i>
-                            </a>
-                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/joashp">
+                            <a class="blue-text text-lighten-2" href="https://www.linkedin.com/in/niteshnitgupta">
                                 <i class="fa fa-linkedin-square"></i>
                             </a>
                         </p>
@@ -154,8 +148,7 @@
                         <img class="activator" src="../img/avatar3.png">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">
-                            Capt. America <br/>
+                        <span class="card-title activator grey-text text-darken-4">Jagadeesh Sirigiri <br/>
                             <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
                         <p>
                             <a class="blue-text text-lighten-2" href="https://www.facebook.com/joash.c.pereira">
