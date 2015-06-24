@@ -10,8 +10,20 @@
 <script src="../js/jquery.js"></script>
 
 <script src="../js/script.js" async=""></script>
-
-
+<link href="../css/ionicons.css" rel="stylesheet" type="text/css" />
+<style>
+    .step:hover i { opacity: .3; }
+    .size-12 { font-size: 12px; }
+    .size-14 { font-size: 14px; }
+    .size-16 { font-size: 16px; }
+    .size-18 { font-size: 18px; }
+    .size-21 { font-size: 21px; }
+    .size-24 { font-size: 24px; }
+    .size-32 { font-size: 32px; }
+    .size-48 { font-size: 48px; }
+    .size-64 { font-size: 64px; }
+    .size-96 { font-size: 96px; }
+</style>
 </head>
 <body>
 
@@ -21,13 +33,13 @@
 			<table width="100%">
 				<tbody>
 					<tr class="mui-appbar-height">
-						<td><a id="appbar-sidenav-show" class="mui-visible-xs-inline-block"><i class="icon-menu"></i> </a>
-							<a id="appbar-sidenav-hide" class="mui-hidden-xs"><i class="icon-menu"></i> </a> <a class="appbar-brand">BOOK S</a>
+						<td><a id="appbar-sidenav-show" class="mui-visible-xs-inline-block size-21"><i class="ion-ios-keypad"></i> </a>
+							<a id="appbar-sidenav-hide" class="mui-hidden-xs size-21"><i class="ion-ios-keypad"></i> </a> <a class="appbar-brand">BOOK S</a>
 						</td>
 						<td class="mui-text-right">
-							<a class="mui-btn btn-accent mui-hidden-xs" href="https://github.com/muicss/mui">Cart Will Come Here</a>
+							<a class="mui-btn btn-accent" href="https://github.com/muicss/mui" style="margin-top:-5px;">Cart</a>
 							<div class="mui-dropdown">
-								<a id="appbar-more-vert" data-mui-toggle="dropdown"><i class="icon-more-vert"></i> </a>
+								<a id="appbar-more-vert" data-mui-toggle="dropdown" class="size-24" style="margin-top:15px;"><i class="ion-android-more-vertical"></i> </a>
 								<ul class="mui-dropdown-menu mui-dropdown-menu-right">
 									<li><a href="https://www.muicss.com/roadmap">Menu 1</a></li>
 									<li><a href="https://www.muicss.com/support">Menu 2</a></li>
@@ -41,25 +53,25 @@
 			</table>
 		</nav>
 	</header>
-	<div id="sidedrawer">
-		<nav id="sidenav">
+	<div id="sidedrawer" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);">
+		<nav id="sidenav" >
 			<div>
-				<h2 class="mui-appbar-line-height">Logo</h2>
+				<div class="mui-appbar-line-height" style="background-color: #2196f3; color:#fff; padding: 0px 35px;font-size: 15px;font-family: "Roboto",sans-serif;"><b>Pick Up</b></div>
 			</div>
 			<div class="mui-divider"></div>
 			<ul>
-		<li class="bold<?php echo ($category == "Philosophy")?" active":""; ?>">	<strong><a href="<?php echo ($category == "Philosophy")?"#":"Philosophy"; ?>" class="waves-effect waves-teal">Philosophy</a></strong></li>
-        <li class="bold<?php echo ($category == "Drama")?" active":""; ?>">			<strong><a href="<?php echo ($category == "Drama")?"#":"Drama"; ?>" class="waves-effect waves-teal">Drama</a></strong></li>
-        <li class="bold<?php echo ($category == "Romance")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Romance")?"#":"Romance"; ?>" class="waves-effect waves-teal">Romance</a></strong></li>
-        <li class="bold<?php echo ($category == "Satire")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Satire")?"#":"Satire"; ?>" class="waves-effect waves-teal">Satire</a></strong></li>
-        <li class="bold<?php echo ($category == "Tragedy")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Tragedy")?"#":"Tragedy"; ?>" class="waves-effect waves-teal">Tragedy</a></strong></li>
-        <li class="bold<?php echo ($category == "Comedy")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Comedy")?"#":"Comedy"; ?>" class="waves-effect waves-teal">Comedy</a></strong></li>
-        <li class="bold<?php echo ($category == "Tragicomedy")?" active":""; ?>">	<strong><a href="<?php echo ($category == "Tragicomedy")?"#":"Tragicomedy"; ?>" class="waves-effect waves-teal">Tragicomedy</a></strong></li>
-        <li class="bold<?php echo ($category == "Fiction")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Fiction")?"#":"Fiction"; ?>" class="waves-effect waves-teal">Fiction</a></strong></li>
-        <li class="bold<?php echo ($category == "NonFiction")?" active":""; ?>">	<strong><a href="<?php echo ($category == "NonFiction")?"#":"NonFiction"; ?>" class="waves-effect waves-teal">NonFiction</a></strong></li>
-        <li class="bold<?php echo ($category == "Travel")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Travel")?"#":"Travel"; ?>" class="waves-effect waves-teal">Travel</a></strong></li>
-        <li class="bold<?php echo ($category == "Science")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Science")?"#":"Science"; ?>" class="waves-effect waves-teal">Science</a></strong></li>
-        <li class="bold<?php echo ($category == "Education")?" active":""; ?>">		<strong><a href="<?php echo ($category == "Education")?"#":"Education"; ?>" class="waves-effect waves-teal">Education</a></strong></li>
+		<li class="bold<?php echo ($category == "Philosophy")?" active":""; ?>">	<span><a href="<?php echo ($category == "Philosophy")?"#":"Philosophy"; ?>" class="waves-effect waves-teal">Philosophy</a></span></li>
+        <li class="bold<?php echo ($category == "Drama")?" active":""; ?>">			<span><a href="<?php echo ($category == "Drama")?"#":"Drama"; ?>" class="waves-effect waves-teal">Drama</a></span></li>
+        <li class="bold<?php echo ($category == "Romance")?" active":""; ?>">		<span><a href="<?php echo ($category == "Romance")?"#":"Romance"; ?>" class="waves-effect waves-teal">Romance</a></span></li>
+        <li class="bold<?php echo ($category == "Satire")?" active":""; ?>">		<span><a href="<?php echo ($category == "Satire")?"#":"Satire"; ?>" class="waves-effect waves-teal">Satire</a></span></li>
+        <li class="bold<?php echo ($category == "Tragedy")?" active":""; ?>">		<span><a href="<?php echo ($category == "Tragedy")?"#":"Tragedy"; ?>" class="waves-effect waves-teal">Tragedy</a></span></li>
+        <li class="bold<?php echo ($category == "Comedy")?" active":""; ?>">		<span><a href="<?php echo ($category == "Comedy")?"#":"Comedy"; ?>" class="waves-effect waves-teal">Comedy</a></span></li>
+        <li class="bold<?php echo ($category == "Tragicomedy")?" active":""; ?>">	<span><a href="<?php echo ($category == "Tragicomedy")?"#":"Tragicomedy"; ?>" class="waves-effect waves-teal">Tragicomedy</a></span></li>
+        <li class="bold<?php echo ($category == "Fiction")?" active":""; ?>">		<span><a href="<?php echo ($category == "Fiction")?"#":"Fiction"; ?>" class="waves-effect waves-teal">Fiction</a></span></li>
+        <li class="bold<?php echo ($category == "NonFiction")?" active":""; ?>">	<span><a href="<?php echo ($category == "NonFiction")?"#":"NonFiction"; ?>" class="waves-effect waves-teal">NonFiction</a></span></li>
+        <li class="bold<?php echo ($category == "Travel")?" active":""; ?>">		<span><a href="<?php echo ($category == "Travel")?"#":"Travel"; ?>" class="waves-effect waves-teal">Travel</a></span></li>
+        <li class="bold<?php echo ($category == "Science")?" active":""; ?>">		<span><a href="<?php echo ($category == "Science")?"#":"Science"; ?>" class="waves-effect waves-teal">Science</a></span></li>
+        <li class="bold<?php echo ($category == "Education")?" active":""; ?>">		<span><a href="<?php echo ($category == "Education")?"#":"Education"; ?>" class="waves-effect waves-teal">Education</a></span></li>
 			</ul>
 		</nav>
 

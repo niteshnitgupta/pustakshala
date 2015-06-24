@@ -12,7 +12,7 @@ class category extends CI_Controller {
 		$this->load->model('Book_Model');
 		$data['books']=$this->Book_Model->get_books_in_category(2);
 		$data['category']="Drama";
-		$this->load->view('books.php', $data);
+		$this->load->view('books_1.php', $data);
 	}
 
 	public function Romance() {

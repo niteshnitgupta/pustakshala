@@ -118,7 +118,8 @@ a {
 }
 
 a:hover {
-	color: #2962FF
+	color: #2962FF;
+	text-decoration:none;
 }
 
 .btn-accent {
@@ -137,7 +138,7 @@ a:hover {
 }
 
 #appbar {
-	background-color: #78909C;
+	background-color: #2196f3;
 	color: #FFF
 }
 
@@ -217,26 +218,37 @@ a:hover {
 	color: rgba(0, 0, 0, .87)
 }
 
-#sidenav strong {
+#sidenav span {
+	font-family: "Roboto",sans-serif;
+	font-weight: normal;
 	display: block;
-	padding: 15px 22px;
-	cursor: pointer
+	cursor: pointer;
+	font-size: 15px;
 }
 
-#sidenav strong:hover {
-	background-color: #E0E0E0
+#sidenav span:hover {
+	background-color: #E0E0E0;
+	color: #444;
+	text-decoration:none;
 }
 
-#sidenav strong+ul>li {
+#sidenav span+ul>li {
 	padding: 6px 0
 }
 
-#sidenav strong:not (.active )+ul {
+#sidenav span:not (.active )+ul {
 	display: none
 }
 
+
+
 #sidenav a.active {
 	color: #2962FF
+}
+
+#sidenav span a {
+	padding: 20px 35px;
+	font-family: "Roboto",sans-serif;
 }
 
 #g-flashes {
