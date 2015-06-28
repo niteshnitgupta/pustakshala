@@ -1,17 +1,19 @@
 <!doctype html>
 <html>
 <head>
+<?php
+$category="";
+?>
+<link rel="stylesheet" type="text/css" media="screen" href="css/mui.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/materialize_mui.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/style_mui.css">
+<link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" >
 
-<link rel="stylesheet" type="text/css" media="screen" href="../css/mui.css">
-<link rel="stylesheet" type="text/css" media="screen" href="../css/materialize_mui.css">
-<link rel="stylesheet" type="text/css" media="screen" href="../css/style_mui.css">
-<link href="../css/font-awesome.min.css" type="text/css" rel="stylesheet" >
+<script src="js/mui.js"></script>
+<script src="js/jquery.js"></script>
 
-<script src="../js/mui.js"></script>
-<script src="../js/jquery.js"></script>
-
-<script src="../js/script.js" async=""></script>
-<link href="../css/ionicons.css" rel="stylesheet" type="text/css" />
+<script src="js/script.js" async=""></script>
+<link href="css/ionicons.css" rel="stylesheet" type="text/css" />
 <style>
     .step:hover i { opacity: .3; }
     .size-12 { font-size: 12px; }
@@ -57,7 +59,7 @@
 	<div id="sidedrawer" style="box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);">
 		<nav id="sidenav" >
 			<div>
-				<a href="../pickup">
+				<a href="pickup">
 					<div class="mui-appbar-line-height" style="background-color: #2196f3; color:#fff; padding: 0px 35px;font-size: 15px;font-family: "Roboto",sans-serif;">
 						<b>Pick Up</b>
 					</div>
@@ -65,18 +67,18 @@
 			</div>
 			<div class="mui-divider"></div>
 			<ul>
-		<li class="bold<?php echo ($category == "Philosophy")?" active":""; ?>">	<span><a href="<?php echo ($category == "Philosophy")?"#":"Philosophy"; ?>" class="waves-effect waves-teal">Philosophy</a></span></li>
-        <li class="bold<?php echo ($category == "Drama")?" active":""; ?>">			<span><a href="<?php echo ($category == "Drama")?"#":"Drama"; ?>" class="waves-effect waves-teal">Drama</a></span></li>
-        <li class="bold<?php echo ($category == "Romance")?" active":""; ?>">		<span><a href="<?php echo ($category == "Romance")?"#":"Romance"; ?>" class="waves-effect waves-teal">Romance</a></span></li>
-        <li class="bold<?php echo ($category == "Satire")?" active":""; ?>">		<span><a href="<?php echo ($category == "Satire")?"#":"Satire"; ?>" class="waves-effect waves-teal">Satire</a></span></li>
-        <li class="bold<?php echo ($category == "Tragedy")?" active":""; ?>">		<span><a href="<?php echo ($category == "Tragedy")?"#":"Tragedy"; ?>" class="waves-effect waves-teal">Tragedy</a></span></li>
-        <li class="bold<?php echo ($category == "Comedy")?" active":""; ?>">		<span><a href="<?php echo ($category == "Comedy")?"#":"Comedy"; ?>" class="waves-effect waves-teal">Comedy</a></span></li>
-        <li class="bold<?php echo ($category == "Tragicomedy")?" active":""; ?>">	<span><a href="<?php echo ($category == "Tragicomedy")?"#":"Tragicomedy"; ?>" class="waves-effect waves-teal">Tragicomedy</a></span></li>
-        <li class="bold<?php echo ($category == "Fiction")?" active":""; ?>">		<span><a href="<?php echo ($category == "Fiction")?"#":"Fiction"; ?>" class="waves-effect waves-teal">Fiction</a></span></li>
-        <li class="bold<?php echo ($category == "NonFiction")?" active":""; ?>">	<span><a href="<?php echo ($category == "NonFiction")?"#":"NonFiction"; ?>" class="waves-effect waves-teal">NonFiction</a></span></li>
-        <li class="bold<?php echo ($category == "Travel")?" active":""; ?>">		<span><a href="<?php echo ($category == "Travel")?"#":"Travel"; ?>" class="waves-effect waves-teal">Travel</a></span></li>
-        <li class="bold<?php echo ($category == "Science")?" active":""; ?>">		<span><a href="<?php echo ($category == "Science")?"#":"Science"; ?>" class="waves-effect waves-teal">Science</a></span></li>
-        <li class="bold<?php echo ($category == "Education")?" active":""; ?>">		<span><a href="<?php echo ($category == "Education")?"#":"Education"; ?>" class="waves-effect waves-teal">Education</a></span></li>
+		<li class="bold<?php echo ($category == "Philosophy")?" active":""; ?>">	<span><a href="category/<?php echo ($category == "Philosophy")?"#":"Philosophy"; ?>" class="waves-effect waves-teal">Philosophy</a></span></li>
+        <li class="bold<?php echo ($category == "Drama")?" active":""; ?>">			<span><a href="category/<?php echo ($category == "Drama")?"#":"Drama"; ?>" class="waves-effect waves-teal">Drama</a></span></li>
+        <li class="bold<?php echo ($category == "Romance")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Romance")?"#":"Romance"; ?>" class="waves-effect waves-teal">Romance</a></span></li>
+        <li class="bold<?php echo ($category == "Satire")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Satire")?"#":"Satire"; ?>" class="waves-effect waves-teal">Satire</a></span></li>
+        <li class="bold<?php echo ($category == "Tragedy")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Tragedy")?"#":"Tragedy"; ?>" class="waves-effect waves-teal">Tragedy</a></span></li>
+        <li class="bold<?php echo ($category == "Comedy")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Comedy")?"#":"Comedy"; ?>" class="waves-effect waves-teal">Comedy</a></span></li>
+        <li class="bold<?php echo ($category == "Tragicomedy")?" active":""; ?>">	<span><a href="category/<?php echo ($category == "Tragicomedy")?"#":"Tragicomedy"; ?>" class="waves-effect waves-teal">Tragicomedy</a></span></li>
+        <li class="bold<?php echo ($category == "Fiction")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Fiction")?"#":"Fiction"; ?>" class="waves-effect waves-teal">Fiction</a></span></li>
+        <li class="bold<?php echo ($category == "NonFiction")?" active":""; ?>">	<span><a href="category/<?php echo ($category == "NonFiction")?"#":"NonFiction"; ?>" class="waves-effect waves-teal">NonFiction</a></span></li>
+        <li class="bold<?php echo ($category == "Travel")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Travel")?"#":"Travel"; ?>" class="waves-effect waves-teal">Travel</a></span></li>
+        <li class="bold<?php echo ($category == "Science")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Science")?"#":"Science"; ?>" class="waves-effect waves-teal">Science</a></span></li>
+        <li class="bold<?php echo ($category == "Education")?" active":""; ?>">		<span><a href="category/<?php echo ($category == "Education")?"#":"Education"; ?>" class="waves-effect waves-teal">Education</a></span></li>
 			</ul>
 		</nav>
 
@@ -89,34 +91,25 @@
 			<!-- example content -->
 
 <br />
-			<h1><?php echo $category; ?></h1>
+			<h1>Pick Up</h1>
 <br />
 			<div class="container">
 				<div class="row">
-				<?php
-		        	if(empty($books)) {
-		        		echo "<center><h4>Sorry !! There is no book in this category.</h4></center>";
-		        	}
-		        	foreach ($books as $book) {
-		        ?>
-			        	<div class="col s12 m3">
+				    	<div class="col s12 m3">
 			                <div class="card">
 			                    <div class="card-image waves-effect waves-block waves-light">
-			                        <img class="activator" src="../img/project1.jpg">
+			                        <img class="activator" src="img/project1.jpg">
 			                    </div>
 			                    <div class="card-content">
-			                        <span class="card-title activator grey-text text-darken-4"> <?php echo $book->title; ?> <i class="mdi-navigation-more-vert right"></i></span>
-			                        <p><a>Price <?php echo $book->price; ?> points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
+			                        <span class="card-title activator grey-text text-darken-4">  <i class="mdi-navigation-more-vert right"></i></span>
+			                        <p><a>Price  points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
 			                    </div>
 			                    <div class="card-reveal">
-			                        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?> <i class="mdi-navigation-close right"></i></span>
-			                        <p><?php echo $book->description; ?> </p>
+			                        <span class="card-title grey-text text-darken-4"> <i class="mdi-navigation-close right"></i></span>
+			                        <p></p>
 			                    </div>
 			                </div>
 			            </div>
-		        <?php
-		        	}
-		        ?>
 				</div>
 			</div>
 		</div>
@@ -190,61 +183,8 @@
 
 
 
-<div id="div_signup" style="display: none;">
 
-
-<ul class="mui-tabs mui-tabs-justified">
-  <li class="mui-active"><a data-mui-toggle="tab" data-mui-controls="pane-justified-1">Sign Up</a></li>
-  <li><a data-mui-toggle="tab" data-mui-controls="pane-justified-2">Login</a></li>
-</ul>
-<div class="mui-tab-content">
-  <div class="mui-tab-pane mui-active" id="pane-justified-1">
-	<form>
-	  <div class="mui-form-group">
-	    <input type="text" class="mui-form-control" required>
-	    <label class="mui-form-floating-label">Name</label>
-	  </div>
-	  <div class="mui-form-group">
-	    <input type="email" class="mui-form-control" required>
-	    <label class="mui-form-floating-label">Email Address</label>
-	  </div>
-	  <div class="mui-form-group">
-	    <input type="password" class="mui-form-control" required>
-	    <label class="mui-form-floating-label">Password</label>
-	  </div>
-	  <button type="submit" class="mui-btn mui-btn-default mui-btn-raised">SIGNUP</button>
-	</form>
-  </div>
-  <div class="mui-tab-pane" id="pane-justified-2">
-  	<form>
-	  <div class="mui-form-group">
-	    <input type="email" class="mui-form-control" required>
-	    <label class="mui-form-floating-label">Email Address</label>
-	  </div>
-	  <div class="mui-form-group">
-	    <input type="password" class="mui-form-control" required>
-	    <label class="mui-form-floating-label">Password</label>
-	  </div>
-	  <button type="submit" class="mui-btn mui-btn-default mui-btn-raised">LOGIN</button>
-	</form>
-  </div>
-</div>
-
-
-
-
-</div>
-
-
-	<link rel="stylesheet" href="../css/jquery-ui.css">
-  	<script src="../js/jquery-2.1.1.min.js"></script>
-	<script src="../js/jquery-ui.js"></script>
-	<script src="../js/materialize.js"></script>
-
-
-	<script type="text/javascript">
-	$("#div_signup").dialog({title:"Sign Up / Login",modal: true});
-	$(".ui-dialog-titlebar").hide();
-	</script>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="js/materialize.js"></script>
 </body>
 </html>
