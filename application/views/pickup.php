@@ -44,10 +44,9 @@ $category="";
 							<div class="mui-dropdown">
 								<a id="appbar-more-vert" data-mui-toggle="dropdown" class="size-24" style="margin-top:15px;"><i class="ion-android-more-vertical"></i> </a>
 								<ul class="mui-dropdown-menu mui-dropdown-menu-right">
-									<li><a href="https://www.muicss.com/roadmap">Menu 1</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 2</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 3</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 4</a></li>
+									<li><a href="https://www.muicss.com/roadmap"><?php if($this->session->has_userdata("username")){echo $this->session->userdata("username");} ?></a></li>
+									<li><a href="https://www.muicss.com/support">My Books</a></li>
+									<li id="logout" style="cursor:pointer"><a>Logout</a></li>
 								</ul>
 							</div>
 						</td>
@@ -94,23 +93,42 @@ $category="";
 			<h1>Pick Up</h1>
 <br />
 			<div class="container">
-				<div class="row">
-				    	<div class="col s12 m3">
-			                <div class="card">
-			                    <div class="card-image waves-effect waves-block waves-light">
-			                        <img class="activator" src="img/project1.jpg">
-			                    </div>
-			                    <div class="card-content">
-			                        <span class="card-title activator grey-text text-darken-4">  <i class="mdi-navigation-more-vert right"></i></span>
-			                        <p><a>Price  points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
-			                    </div>
-			                    <div class="card-reveal">
-			                        <span class="card-title grey-text text-darken-4"> <i class="mdi-navigation-close right"></i></span>
-			                        <p></p>
-			                    </div>
-			                </div>
-			            </div>
+				<legend>Book's Details</legend>
+				<div class="mui-form-group">
+					<input type="text" id='txt_title' class="mui-form-control" required>
+					<label class="mui-form-floating-label">Title</label>
 				</div>
+				<div class="mui-form-group">
+					<input type="text" id='txt_isbn' class="mui-form-control" required>
+					<label class="mui-form-floating-label">ISBN</label>
+				</div>
+				<div class="mui-form-group">
+					<textarea class="mui-form-control" id='txt_desc' required></textarea>
+					<label class="mui-form-floating-label">Description</label>
+				</div>
+				<div class="mui-form-group">
+					<input type="number" class="mui-form-control" id='txt_price' required>
+					<label class="mui-form-floating-label">Price</label>
+				</div>
+<br />
+
+      <input type="radio"/> Hello
+
+
+				<div class="mui-select">
+				    <select id="address">
+				    <?php
+				    	foreach ($address as $a) {
+				    	?>
+				    		<option value='<?php echo $a->id; ?>'><?php echo $a->address; ?></option>
+				    	<?php
+				    	}
+				    ?>
+				        <option value='-1'>ADD NEW ADDRESS</option>
+				    </select>
+				</div>
+<br /><br />
+				<button type="submit" id='btn_request' class="mui-btn mui-btn-default mui-btn-raised">Request Pickup</button>
 			</div>
 		</div>
 	</div>
@@ -181,10 +199,266 @@ $category="";
     </div>
 </footer>
 
+<div id="div_signup" style="display: none;">
+
+
+<ul class="mui-tabs mui-tabs-justified">
+  <li class="mui-active"><a data-mui-toggle="tab" data-mui-controls="pane-justified-1">Sign Up</a></li>
+  <li><a data-mui-toggle="tab" data-mui-controls="pane-justified-2">Login</a></li>
+</ul>
+<div class="mui-tab-content">
+  <div class="mui-tab-pane mui-active" id="pane-justified-1">
+	<div id="frm_signup">
+	  <div class="mui-form-group">
+	    <input id="txt_signup_name" type="text" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Name</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_signup_email" type="email" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Email Address</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_signup_phone" type="number" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Phone</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_signup_password" type="password" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Password</label>
+	  </div>
+	  <button type="submit" id="btn_signup" class="mui-btn mui-btn-default mui-btn-raised">SIGNUP</button>
+	</div>
+  </div>
+
+  <div class="mui-tab-pane" id="pane-justified-2">
+  	<div id="frm_login">
+	  <div class="mui-form-group">
+	    <input id="txt_login_email" type="email" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Email Address</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_login_password" type="password" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Password</label>
+	  </div>
+	  <button type="submit" id="btn_login" class="mui-btn mui-btn-default mui-btn-raised">LOGIN</button>
+	</div>
+  </div>
+</div>
+
+</div>
+
+
+  <div class="mui-tab-pane" id="addNewAddress" style="display: none;">
+  	<div id="frm_address">
+	  <div class="mui-form-group">
+	    <textarea id="txt_add_address" class="mui-form-control" required></textarea>
+	    <label class="mui-form-floating-label">Address</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_add_landmark" type="text" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Landmark</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_add_city" type="text" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">City</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_add_state" type="text" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">State</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_add_pincode" type="number" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Pincode</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_add_phone" type="number" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Phone</label>
+	  </div>
+	  <button type="submit" id="btn_add_address" class="mui-btn mui-btn-default mui-btn-raised">ADD ADDRESS</button>
+	</div>
+  </div>
 
 
 
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<link rel="stylesheet" href="css/jquery-ui.css">
+  	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
 	<script src="js/materialize.js"></script>
+	<script src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+	function IsEmail(email) {
+		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regex.test(email);
+	}
+
+	if ($.cookie("userid") == null || $.cookie("userid") == "" || $.cookie("userid") == undefined) {
+		$("#div_signup").dialog({title:"Sign Up / Login",modal: true});
+		$(".ui-dialog-titlebar").hide();
+	}
+
+	$("#btn_signup").click(function(){
+		var name = $("#txt_signup_name").val();
+		var email = $("#txt_signup_email").val();
+		var phone = $("#txt_signup_phone").val();
+		var password = $("#txt_signup_password").val();
+		if($.trim(name) == "") {
+			alert("Please provide Name");
+			return;
+		}
+		if(IsEmail(email) === false) {
+			alert("Please provide email");
+			return;
+		}
+		if($.trim(password) == "") {
+			alert("Please provide password");
+			return;
+		}
+
+		$.post("user/register", {
+			name: $("#txt_signup_name").val(),
+			email: $("#txt_signup_email").val(),
+			phone: $("#txt_signup_phone").val(),
+			password: $("#txt_signup_password").val()
+	    }, function (data, status) {
+		    if (data == "DUPLICATE") {
+			    alert("Email ID already exists !!");
+		    } else {
+			    $.cookie("userid",data);
+		    	$("#div_signup").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
+
+
+	$("#btn_login").click(function(){
+		var email = $("#txt_login_email").val();
+		var password = $("#txt_login_password").val();
+		if(IsEmail(email) === false) {
+			alert("Please provide email");
+			return;
+		}
+		if($.trim(password) == "") {
+			alert("Please provide password");
+			return;
+		}
+		$.post("user/login", {
+			email: $("#txt_login_email").val(),
+			password: $("#txt_login_password").val()
+	    }, function (data, status) {
+		    if (data == "") {
+			    alert("Invalid Email ID / Password");
+		    } else {
+			    $.cookie("userid",data);
+		    	$("#div_signup").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
+
+
+	$("#btn_request").click(function(){
+		var title = $("#txt_title").val();
+		var isbn = $("#txt_isbn").val();
+		var desc = $("#txt_desc").val();
+		var price = $("#txt_price").val();
+		var address = $("#address").val();
+
+		if($.trim(title) == "") {
+			alert("Please provide title");
+			return;
+		}
+		if($.trim(isbn) == "") {
+			alert("Please provide isbn");
+			return;
+		}
+		if($.trim(desc) == "") {
+			alert("Please provide desc");
+			return;
+		}
+		if($.trim(price) == "") {
+			alert("Please provide price");
+			return;
+		}
+
+		$.post("book/request_pick_up", {
+			email: $("#txt_login_email").val(),
+			password: $("#txt_login_password").val()
+	    }, function (data, status) {
+		    if (data == "") {
+			    alert("Invalid Email ID / Password");
+		    } else {
+			    $.cookie("userid",data);
+		    	$("#div_signup").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
+
+	$("#btn_add_address").click(function(){
+		var address = $("#txt_add_address").val();
+		var landmark = $("#txt_add_landmark").val();
+		var city = $("#txt_add_city").val();
+		var state = $("#txt_add_state").val();
+		var pincode = $("#txt_add_pincode").val();
+		var phone = $("#txt_add_phone").val();
+
+		if($.trim(address) == "") {
+			alert("Please provide address");
+			return;
+		}
+		if($.trim(landmark) == "") {
+			alert("Please provide landmark");
+			return;
+		}
+		if($.trim(city) == "") {
+			alert("Please provide city");
+			return;
+		}
+		if($.trim(state) == "") {
+			alert("Please provide state");
+			return;
+		}
+		if($.trim(pincode) == "") {
+			alert("Please provide pincode");
+			return;
+		}
+		if($.trim(phone) == "") {
+			alert("Please provide phone number");
+			return;
+		}
+
+		$.post("user/add_address", {
+			user_id: $.cookie("userid"),
+			address: $("#txt_add_address").val(),
+			landmark: $("#txt_add_landmark").val(),
+			city: $("#txt_add_city").val(),
+			state: $("#txt_add_state").val(),
+			pincode: $("#txt_add_pincode").val(),
+			phone: $("#txt_add_phone").val(),
+			latitude: 0,
+			longitude: 0
+	    }, function (data, status) {
+		    if (data == "") {
+			    alert("Something went wrong");
+		    } else {
+			    $("#addNewAddress").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
+
+
+	$("#logout").click(function(){
+		$.removeCookie('userid');
+		location.reload();
+	});
+
+	$("#address").change(function(){
+		if ($("#address").val() == -1) {
+			$("#addNewAddress").dialog({title:"Add New Address",modal: true, width:700});
+		}
+	});
+</script>
 </body>
 </html>

@@ -9,5 +9,10 @@ class book extends CI_Controller {
 
 		var_dump($data);
 	}
+
+	public function request_pick_up()
+	{
+
+	}
 }
 ?>

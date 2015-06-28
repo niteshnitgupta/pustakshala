@@ -27,11 +27,12 @@ class User_Address_Model extends CI_Model {
 		$this->latitude 	= $this->input->get_post('latitude');
 		$this->longitude 	= $this->input->get_post('longitude');
 		$this->db->insert('user_address', $this);
+		return $this->db->insert_id();
 	}
 
-	public function get_all_address_with_user_id()
+	public function get_all_address_with_user_id($user_id)
 	{
-		$this->user_id = $this->input->get_post('user_id');
+		$this->user_id = $user_id;
 		$this->db->where('user_id', $this->user_id);
 		$query = $this->db->get('user_address');
 		return $query->result();

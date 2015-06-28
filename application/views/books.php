@@ -42,10 +42,9 @@
 							<div class="mui-dropdown">
 								<a id="appbar-more-vert" data-mui-toggle="dropdown" class="size-24" style="margin-top:15px;"><i class="ion-android-more-vertical"></i> </a>
 								<ul class="mui-dropdown-menu mui-dropdown-menu-right">
-									<li><a href="https://www.muicss.com/roadmap">Menu 1</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 2</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 3</a></li>
-									<li><a href="https://www.muicss.com/support">Menu 4</a></li>
+									<li><a href="https://www.muicss.com/roadmap"><?php if($this->session->has_userdata("username")){echo $this->session->userdata("username");} ?></a></li>
+									<li><a href="https://www.muicss.com/support">My Books</a></li>
+									<li id="logout" style="cursor:pointer"><a>Logout</a></li>
 								</ul>
 							</div>
 						</td>
@@ -199,34 +198,39 @@
 </ul>
 <div class="mui-tab-content">
   <div class="mui-tab-pane mui-active" id="pane-justified-1">
-	<form>
+	<div id="frm_signup">
 	  <div class="mui-form-group">
-	    <input type="text" class="mui-form-control" required>
+	    <input id="txt_signup_name" type="text" class="mui-form-control" required>
 	    <label class="mui-form-floating-label">Name</label>
 	  </div>
 	  <div class="mui-form-group">
-	    <input type="email" class="mui-form-control" required>
+	    <input id="txt_signup_email" type="email" class="mui-form-control" required>
 	    <label class="mui-form-floating-label">Email Address</label>
 	  </div>
 	  <div class="mui-form-group">
-	    <input type="password" class="mui-form-control" required>
+	    <input id="txt_signup_phone" type="number" class="mui-form-control" required>
+	    <label class="mui-form-floating-label">Phone</label>
+	  </div>
+	  <div class="mui-form-group">
+	    <input id="txt_signup_password" type="password" class="mui-form-control" required>
 	    <label class="mui-form-floating-label">Password</label>
 	  </div>
-	  <button type="submit" class="mui-btn mui-btn-default mui-btn-raised">SIGNUP</button>
-	</form>
+	  <button type="submit" id="btn_signup" class="mui-btn mui-btn-default mui-btn-raised">SIGNUP</button>
+	</div>
   </div>
+
   <div class="mui-tab-pane" id="pane-justified-2">
-  	<form>
+  	<div id="frm_login">
 	  <div class="mui-form-group">
-	    <input type="email" class="mui-form-control" required>
+	    <input id="txt_login_email" type="email" class="mui-form-control" required>
 	    <label class="mui-form-floating-label">Email Address</label>
 	  </div>
 	  <div class="mui-form-group">
-	    <input type="password" class="mui-form-control" required>
+	    <input id="txt_login_password" type="password" class="mui-form-control" required>
 	    <label class="mui-form-floating-label">Password</label>
 	  </div>
-	  <button type="submit" class="mui-btn mui-btn-default mui-btn-raised">LOGIN</button>
-	</form>
+	  <button type="submit" id="btn_login" class="mui-btn mui-btn-default mui-btn-raised">LOGIN</button>
+	</div>
   </div>
 </div>
 
@@ -240,11 +244,83 @@
   	<script src="../js/jquery-2.1.1.min.js"></script>
 	<script src="../js/jquery-ui.js"></script>
 	<script src="../js/materialize.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
+
+<script type="text/javascript">
+	function IsEmail(email) {
+		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		return regex.test(email);
+	}
+
+	if ($.cookie("userid") == null || $.cookie("userid") == "" || $.cookie("userid") == undefined) {
+		$("#div_signup").dialog({title:"Sign Up / Login",modal: true});
+		$(".ui-dialog-titlebar").hide();
+	}
+
+	$("#btn_signup").click(function(){
+		var name = $("#txt_signup_name").val();
+		var email = $("#txt_signup_email").val();
+		var phone = $("#txt_signup_phone").val();
+		var password = $("#txt_signup_password").val();
+		if($.trim(name) == "") {
+			alert("Please provide Name");
+			return;
+		}
+		if(IsEmail(email) === false) {
+			alert("Please provide email");
+			return;
+		}
+		if($.trim(password) == "") {
+			alert("Please provide password");
+			return;
+		}
+
+		$.post("../user/register", {
+			name: $("#txt_signup_name").val(),
+			email: $("#txt_signup_email").val(),
+			phone: $("#txt_signup_phone").val(),
+			password: $("#txt_signup_password").val()
+	    }, function (data, status) {
+		    if (data == "DUPLICATE") {
+			    alert("Email ID already exists !!");
+		    } else {
+			    $.cookie("userid",data);
+		    	$("#div_signup").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
 
 
-	<script type="text/javascript">
-	$("#div_signup").dialog({title:"Sign Up / Login",modal: true});
-	$(".ui-dialog-titlebar").hide();
-	</script>
+	$("#btn_login").click(function(){
+		var email = $("#txt_login_email").val();
+		var password = $("#txt_login_password").val();
+		if(IsEmail(email) === false) {
+			alert("Please provide email");
+			return;
+		}
+		if($.trim(password) == "") {
+			alert("Please provide password");
+			return;
+		}
+		$.post("../user/login", {
+			email: $("#txt_login_email").val(),
+			password: $("#txt_login_password").val()
+	    }, function (data, status) {
+		    if (data == "") {
+			    alert("Invalid Email ID / Password");
+		    } else {
+			    $.cookie("userid",data);
+		    	$("#div_signup").dialog("close");
+		    	location.reload();
+		    }
+	    });
+	});
+
+	$("#logout").click(function(){
+		$.removeCookie('userid');
+		location.reload();
+	});
+</script>
 </body>
 </html>
