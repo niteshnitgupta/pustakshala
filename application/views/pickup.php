@@ -111,9 +111,58 @@ $category="";
 					<label class="mui-form-floating-label">Price</label>
 				</div>
 <br />
-
-      <input type="radio"/> Hello
-
+				<h4><u>Categories</u></h4>
+				<div class="row">
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Philosophy" />
+					      		<label for="chkbox_Philosophy" style="font-size:15px; font-weight: normal;">Philosophy</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Drama" />
+					      		<label for="chkbox_Drama" style="font-size:15px; font-weight: normal;">Drama</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Romance" />
+					      		<label for="chkbox_Romance" style="font-size:15px; font-weight: normal;">Romance</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Satire" />
+					      		<label for="chkbox_Satire" style="font-size:15px; font-weight: normal;">Satire</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Tragedy" />
+					      		<label for="chkbox_Tragedy" style="font-size:15px; font-weight: normal;">Tragedy</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Comedy" />
+					      		<label for="chkbox_Comedy" style="font-size:15px; font-weight: normal;">Comedy</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Tragicomedy" />
+					      		<label for="chkbox_Tragicomedy" style="font-size:15px; font-weight: normal;">Tragicomedy</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Fiction" />
+					      		<label for="chkbox_Fiction" style="font-size:15px; font-weight: normal;">Fiction</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_NonFiction" />
+					      		<label for="chkbox_NonFiction" style="font-size:15px; font-weight: normal;">NonFiction</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Travel" />
+					      		<label for="chkbox_Travel" style="font-size:15px; font-weight: normal;">Travel</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Science" />
+					      		<label for="chkbox_Science" style="font-size:15px; font-weight: normal;">Science</label>
+					</div>
+					<div class="col s12 m4 l3">
+					            <input type="checkbox" id="chkbox_Education" />
+					      		<label for="chkbox_Education" style="font-size:15px; font-weight: normal;">Education</label>
+					</div>
+				</div>
+<br />
 
 				<div class="mui-select">
 				    <select id="address">
@@ -454,9 +503,15 @@ $category="";
 		location.reload();
 	});
 
+	$("#address").click(function(){
+		if ($("#address").val() == -1) {
+			$("#addNewAddress").dialog({title:"Add New Address",modal: true, width:700, close: function(event, ui) { $("#address").val($("#address option:first").val()); }});
+		}
+	});
+
 	$("#address").change(function(){
 		if ($("#address").val() == -1) {
-			$("#addNewAddress").dialog({title:"Add New Address",modal: true, width:700});
+			$("#addNewAddress").dialog({title:"Add New Address",modal: true, width:700, close: function(event, ui) { $("#address").val($("#address option:first").val()); }});
 		}
 	});
 </script>
