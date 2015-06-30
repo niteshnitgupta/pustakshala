@@ -253,7 +253,7 @@
 	}
 
 	if ($.cookie("userid") == null || $.cookie("userid") == "" || $.cookie("userid") == undefined) {
-		$("#div_signup").dialog({title:"Sign Up / Login",modal: true});
+		$("#div_signup").dialog({title:"Sign Up / Login",modal: true, closeOnEscape: false});
 		$(".ui-dialog-titlebar").hide();
 	}
 
@@ -284,7 +284,7 @@
 		    if (data == "DUPLICATE") {
 			    alert("Email ID already exists !!");
 		    } else {
-			    $.cookie("userid",data);
+			    $.cookie("userid",data,{ path: '/book' });
 		    	$("#div_signup").dialog("close");
 		    	location.reload();
 		    }
@@ -310,7 +310,7 @@
 		    if (data == "") {
 			    alert("Invalid Email ID / Password");
 		    } else {
-			    $.cookie("userid",data);
+			    $.cookie("userid",data,{ path: '/book' });
 		    	$("#div_signup").dialog("close");
 		    	location.reload();
 		    }
@@ -318,7 +318,7 @@
 	});
 
 	$("#logout").click(function(){
-		$.removeCookie('userid');
+		$.removeCookie('userid',{ path: '/book' });
 		location.reload();
 	});
 </script>
