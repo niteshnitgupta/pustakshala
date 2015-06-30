@@ -12,7 +12,14 @@ class book extends CI_Controller {
 
 	public function request_pick_up()
 	{
+		$this->load->model('Book_Model');
+		$bookid = $this->Book_Model->add_book();
 
+		$this->load->model('Transaction_Model');
+		$transactionid = $this->Transaction_Model->add_new_transaction(1);
+
+		$this->load->model('Transaction_Book_Model');
+		$this->Transaction_Book_Model->add_transaction_book($transactionid, $bookid);
 	}
 }
 ?>

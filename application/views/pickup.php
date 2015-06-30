@@ -95,11 +95,11 @@ $category="";
 			<div class="container">
 				<legend>Book's Details</legend>
 				<div class="mui-form-group">
-					<input type="text" id='txt_title' class="mui-form-control" required>
+					<input type="text" id='txt_title' class="mui-form-control" style="font-size: 16px;" required>
 					<label class="mui-form-floating-label">Title</label>
 				</div>
 				<div class="mui-form-group">
-					<input type="text" id='txt_isbn' class="mui-form-control" required>
+					<input type="text" id='txt_isbn' class="mui-form-control" style="font-size: 16px;" required>
 					<label class="mui-form-floating-label">ISBN</label>
 				</div>
 				<div class="mui-form-group">
@@ -107,58 +107,62 @@ $category="";
 					<label class="mui-form-floating-label">Description</label>
 				</div>
 				<div class="mui-form-group">
-					<input type="number" class="mui-form-control" id='txt_price' required>
+					<input type="number" class="mui-form-control" style="font-size: 16px;" id='txt_price' required>
 					<label class="mui-form-floating-label">Price</label>
+				</div>
+				<div class="mui-form-group">
+					<input type="number" class="mui-form-control" style="font-size: 16px;" id='txt_year' required>
+					<label class="mui-form-floating-label">Year</label>
 				</div>
 <br />
 				<h4><u>Categories</u></h4>
 				<div class="row">
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Philosophy" />
+					            <input type="checkbox" id="chkbox_Philosophy" name="category" value="1" />
 					      		<label for="chkbox_Philosophy" style="font-size:15px; font-weight: normal;">Philosophy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Drama" />
+					            <input type="checkbox" id="chkbox_Drama" name="category" value="2" />
 					      		<label for="chkbox_Drama" style="font-size:15px; font-weight: normal;">Drama</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Romance" />
+					            <input type="checkbox" id="chkbox_Romance" name="category" value="3" />
 					      		<label for="chkbox_Romance" style="font-size:15px; font-weight: normal;">Romance</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Satire" />
+					            <input type="checkbox" id="chkbox_Satire" name="category" value="4" />
 					      		<label for="chkbox_Satire" style="font-size:15px; font-weight: normal;">Satire</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Tragedy" />
+					            <input type="checkbox" id="chkbox_Tragedy" name="category" value="5" />
 					      		<label for="chkbox_Tragedy" style="font-size:15px; font-weight: normal;">Tragedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Comedy" />
+					            <input type="checkbox" id="chkbox_Comedy" name="category" value="6" />
 					      		<label for="chkbox_Comedy" style="font-size:15px; font-weight: normal;">Comedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Tragicomedy" />
+					            <input type="checkbox" id="chkbox_Tragicomedy" name="category" value="7" />
 					      		<label for="chkbox_Tragicomedy" style="font-size:15px; font-weight: normal;">Tragicomedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Fiction" />
+					            <input type="checkbox" id="chkbox_Fiction" name="category" value="8" />
 					      		<label for="chkbox_Fiction" style="font-size:15px; font-weight: normal;">Fiction</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_NonFiction" />
+					            <input type="checkbox" id="chkbox_NonFiction" name="category" value="9" />
 					      		<label for="chkbox_NonFiction" style="font-size:15px; font-weight: normal;">NonFiction</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Travel" />
+					            <input type="checkbox" id="chkbox_Travel" name="category" value="10" />
 					      		<label for="chkbox_Travel" style="font-size:15px; font-weight: normal;">Travel</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Science" />
+					            <input type="checkbox" id="chkbox_Science" name="category" value="11" />
 					      		<label for="chkbox_Science" style="font-size:15px; font-weight: normal;">Science</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Education" />
+					            <input type="checkbox" id="chkbox_Education" name="category" value="12" />
 					      		<label for="chkbox_Education" style="font-size:15px; font-weight: normal;">Education</label>
 					</div>
 				</div>
@@ -412,6 +416,7 @@ $category="";
 		var desc = $("#txt_desc").val();
 		var price = $("#txt_price").val();
 		var address = $("#address").val();
+		var year = $("#txt_year").val();
 
 		if($.trim(title) == "") {
 			alert("Please provide title");
@@ -429,17 +434,46 @@ $category="";
 			alert("Please provide price");
 			return;
 		}
+		if($.trim(year) == "") {
+			alert("Please provide year of print");
+			return;
+		}
+		if($.trim(address) == "-1") {
+			alert("Please provide address");
+			return;
+		}
+
+		var isChecked = false;
+		var checkedValues = [];
+		$("input[name='category']").each(function(){
+		    if ($(this).prop('checked')==true){
+		    	isChecked = true;
+		    	checkedValues.push($(this).val());
+		    }
+		});
+
+		if (! isChecked) {
+			alert("Please select atleast one category");
+			return;
+		}
 
 		$.post("book/request_pick_up", {
-			email: $("#txt_login_email").val(),
-			password: $("#txt_login_password").val()
+			user_id:		$.cookie("userid"),
+			title: 			$("#txt_title").val(),
+			isbn: 			$("#txt_isbn").val(),
+			price: 			$("#txt_price").val(),
+			description: 	$("#txt_desc").val(),
+			year: 			$("#txt_year").val(),
+			address:		$("#address").val(),
+			category: 		checkedValues
+
 	    }, function (data, status) {
-		    if (data == "") {
-			    alert("Invalid Email ID / Password");
+		    if (data == "" || data == "0") {
+			    alert("OOPS!! Something went wrong! Prease try again");
+			    location.reload();
 		    } else {
-			    $.cookie("userid",data,{ path: '/book' });
-		    	$("#div_signup").dialog("close");
-		    	location.reload();
+			    alert("Pickup is requested successfully! We will get back to you soon!");
+			    location.href="category/Philosophy";
 		    }
 	    });
 	});

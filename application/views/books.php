@@ -108,8 +108,8 @@
 			                        <p><a>Price <?php echo $book->price; ?> points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
 			                    </div>
 			                    <div class="card-reveal">
-			                        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?> <i class="mdi-navigation-close right"></i></span>
-			                        <p><?php echo $book->description; ?> </p>
+			                        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?> <i class="mdi-navigation-close right"></i></span><br />
+			                        <p><?php echo str_replace("\n","<br />",$book->description); ?> </p>
 			                    </div>
 			                </div>
 			            </div>

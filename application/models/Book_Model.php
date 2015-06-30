@@ -5,6 +5,8 @@ class Book_Model extends CI_Model {
 	public $isbn;
 	public $price;
 	public $status_id;
+	public $description;
+	public $year;
 
 	public function __construct()
 	{
@@ -39,7 +41,10 @@ class Book_Model extends CI_Model {
 		$this->title    	= $this->input->get_post('title');
 		$this->isbn  		= $this->input->get_post('isbn');
 		$this->price    	= $this->input->get_post('price');
-		$this->status_id    = $this->input->get_post('status');
+		$this->status_id    = 3;
+		$this->description  = $this->input->get_post('description');
+		$this->year    		= $this->input->get_post('year');
+
 		$category = (array) $this->input->get_post('category');
 		$this->db->insert('book', $this);
 		$bookid = $this->db->insert_id();
@@ -47,7 +52,7 @@ class Book_Model extends CI_Model {
 		foreach ($category as $categoryid) {
 			$this->Book_Category_Model->add_book_category($bookid, $categoryid);
 		}
-		//$this->db->insert('book', $this);
+		return $bookid;
 	}
 
 	public function update_book()
@@ -56,6 +61,8 @@ class Book_Model extends CI_Model {
 		$this->isbn  		= $this->input->get_post('isbn');
 		$this->price    	= $this->input->get_post('price');
 		$this->status_id    = $this->input->get_post('status');
+		$this->description  = $this->input->get_post('description');
+		$this->year    		= $this->input->get_post('year');
 		$this->db->update('book', $this, array('id' => $this->input->get_post('id')));
 	}
 }
