@@ -4,6 +4,16 @@
 <?php
 $category="";
 ?>
+<?php
+if(! isset($book->title)) {
+?>
+<script type="text/javascript">
+window.location.href="category/Philosophy";
+</script>
+<?php
+die();
+}
+?>
 <link rel="stylesheet" type="text/css" media="screen" href="css/mui.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/materialize_mui.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/style_mui.css">
@@ -90,79 +100,79 @@ $category="";
 			<!-- example content -->
 
 <br />
-			<h1>Pick Up</h1>
+			<h1>Exchange</h1>
 <br />
 			<div class="container">
 				<legend>Book's Details</legend>
 				<div class="mui-form-group">
-					<input type="text" id='txt_title' class="mui-form-control" style="font-size: 16px;" required>
+					<input type="text" id='txt_title' class="mui-form-control" style="font-size: 16px; cursor:default;" value="<?php echo $book->title;?>" disabled>
 					<label class="mui-form-floating-label">Title</label>
 				</div>
 				<div class="mui-form-group">
-					<input type="text" id='txt_isbn' class="mui-form-control" style="font-size: 16px;" required>
+					<input type="text" id='txt_isbn' class="mui-form-control" style="font-size: 16px; cursor:default;" value="<?php echo $book->isbn;?>" disabled>
 					<label class="mui-form-floating-label">ISBN</label>
 				</div>
 				<div class="mui-form-group">
-					<textarea class="mui-form-control" id='txt_desc' required></textarea>
+					<textarea class="mui-form-control" id='txt_desc' style="cursor:default;" disabled><?php echo $book->description;?></textarea>
 					<label class="mui-form-floating-label">Description</label>
 				</div>
 				<div class="mui-form-group">
-					<input type="number" class="mui-form-control" style="font-size: 16px;" id='txt_price' required>
+					<input type="number" class="mui-form-control" style="font-size: 16px; cursor:default;" value="<?php echo $book->price;?>" disabled>
 					<label class="mui-form-floating-label">Price</label>
 				</div>
 				<div class="mui-form-group">
-					<input type="number" class="mui-form-control" style="font-size: 16px;" id='txt_year' required>
+					<input type="number" class="mui-form-control" style="font-size: 16px; cursor:default;" value="<?php echo $book->year;?>" disabled>
 					<label class="mui-form-floating-label">Year</label>
 				</div>
 <br />
 				<h4><u>Categories</u></h4>
 				<div class="row">
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Philosophy" name="category" value="1" />
+					            <input type="checkbox" id="chkbox_Philosophy" name="category" value="1" <?php echo in_array(1, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Philosophy" style="font-size:15px; font-weight: normal;">Philosophy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Drama" name="category" value="2" />
+					            <input type="checkbox" id="chkbox_Drama" name="category" value="2" <?php echo in_array(2, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Drama" style="font-size:15px; font-weight: normal;">Drama</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Romance" name="category" value="3" />
+					            <input type="checkbox" id="chkbox_Romance" name="category" value="3" <?php echo in_array(3, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Romance" style="font-size:15px; font-weight: normal;">Romance</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Satire" name="category" value="4" />
+					            <input type="checkbox" id="chkbox_Satire" name="category" value="4" <?php echo in_array(4, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Satire" style="font-size:15px; font-weight: normal;">Satire</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Tragedy" name="category" value="5" />
+					            <input type="checkbox" id="chkbox_Tragedy" name="category" value="5" <?php echo in_array(5, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Tragedy" style="font-size:15px; font-weight: normal;">Tragedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Comedy" name="category" value="6" />
+					            <input type="checkbox" id="chkbox_Comedy" name="category" value="6" <?php echo in_array(6, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Comedy" style="font-size:15px; font-weight: normal;">Comedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Tragicomedy" name="category" value="7" />
+					            <input type="checkbox" id="chkbox_Tragicomedy" name="category" value="7" <?php echo in_array(7, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Tragicomedy" style="font-size:15px; font-weight: normal;">Tragicomedy</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Fiction" name="category" value="8" />
+					            <input type="checkbox" id="chkbox_Fiction" name="category" value="8" <?php echo in_array(8, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Fiction" style="font-size:15px; font-weight: normal;">Fiction</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_NonFiction" name="category" value="9" />
+					            <input type="checkbox" id="chkbox_NonFiction" name="category" value="9" <?php echo in_array(9, $categories)?"checked":"";?> />
 					      		<label for="chkbox_NonFiction" style="font-size:15px; font-weight: normal;">NonFiction</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Travel" name="category" value="10" />
+					            <input type="checkbox" id="chkbox_Travel" name="category" value="10" <?php echo in_array(10, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Travel" style="font-size:15px; font-weight: normal;">Travel</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Science" name="category" value="11" />
+					            <input type="checkbox" id="chkbox_Science" name="category" value="11" <?php echo in_array(11, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Science" style="font-size:15px; font-weight: normal;">Science</label>
 					</div>
 					<div class="col s12 m4 l3">
-					            <input type="checkbox" id="chkbox_Education" name="category" value="12" />
+					            <input type="checkbox" id="chkbox_Education" name="category" value="12" <?php echo in_array(12, $categories)?"checked":"";?> />
 					      		<label for="chkbox_Education" style="font-size:15px; font-weight: normal;">Education</label>
 					</div>
 				</div>
@@ -181,7 +191,7 @@ $category="";
 				    </select>
 				</div>
 <br /><br />
-				<button type="submit" id='btn_request' class="mui-btn mui-btn-default mui-btn-raised">Request Pickup</button>
+				<button type="submit" id='btn_request' class="mui-btn mui-btn-default mui-btn-raised">Request Drop</button>
 			</div>
 		</div>
 	</div>
@@ -418,33 +428,6 @@ $category="";
 
 
 	$("#btn_request").click(function(){
-		var title = $("#txt_title").val();
-		var isbn = $("#txt_isbn").val();
-		var desc = $("#txt_desc").val();
-		var price = $("#txt_price").val();
-		var address = $("#address").val();
-		var year = $("#txt_year").val();
-
-		if($.trim(title) == "") {
-			alert("Please provide title");
-			return;
-		}
-		if($.trim(isbn) == "") {
-			alert("Please provide isbn");
-			return;
-		}
-		if($.trim(desc) == "") {
-			alert("Please provide desc");
-			return;
-		}
-		if($.trim(price) == "") {
-			alert("Please provide price");
-			return;
-		}
-		if($.trim(year) == "") {
-			alert("Please provide year of print");
-			return;
-		}
 		if($.trim(address) == "-1") {
 			alert("Please provide address");
 			return;
@@ -464,22 +447,19 @@ $category="";
 			return;
 		}
 
-		$.post("book/request_pick_up", {
+		$.post("book/request_drop", {
 			user_id:		$.cookie("userid"),
-			title: 			$("#txt_title").val(),
-			isbn: 			$("#txt_isbn").val(),
-			price: 			$("#txt_price").val(),
-			description: 	$("#txt_desc").val(),
-			year: 			$("#txt_year").val(),
-			address:		$("#address").val(),
-			category: 		checkedValues
+			book: 			<?php echo $book->id; ?>,
+			address:		$("#address").val()
 
 	    }, function (data, status) {
 		    if (data == "" || data == "0") {
 			    alert("OOPS!! Something went wrong! Prease try again");
-			    location.reload();
+		    } else if (data == "success") {
+			    alert("Drop is requested successfully! We will get back to you soon!");
+			    location.href="category/Philosophy";
 		    } else {
-			    alert("Pickup is requested successfully! We will get back to you soon!");
+		    	alert(data);
 			    location.href="category/Philosophy";
 		    }
 	    });

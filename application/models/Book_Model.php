@@ -21,7 +21,7 @@ class Book_Model extends CI_Model {
 
 	public function get_book_with_id()
 	{
-		$id = $this->input->get_post('id');
+		$id = $this->input->get_post('book');
 		$this->db->where('id', $id);
 		$query = $this->db->get('book');
 		return $query->result();
@@ -64,6 +64,13 @@ class Book_Model extends CI_Model {
 		$this->description  = $this->input->get_post('description');
 		$this->year    		= $this->input->get_post('year');
 		$this->db->update('book', $this, array('id' => $this->input->get_post('id')));
+	}
+
+	public function update_status($id, $status)
+	{
+		$data=array('status_id'=>$status);
+		$this->db->update('book', $data, array('id' => $id, 'status_id' => 1));
+		return $this->db->affected_rows();
 	}
 }
 ?>

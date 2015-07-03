@@ -9,6 +9,14 @@ class Book_Category_Model extends CI_Model {
 		parent::__construct();
 	}
 
+	public function get_categories_with_bookid()
+	{
+		$id = $this->input->get_post('book');
+		$this->db->where('book_id', $id);
+		$query = $this->db->get('book_category');
+		return $query->result();
+	}
+
 	public function add_book_category($bookid, $categoryid)
 	{
 		$this->book_id    	= $bookid;

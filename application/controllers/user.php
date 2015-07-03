@@ -1,5 +1,5 @@
 <?php
-class user extends CI_Controller {
+class User extends CI_Controller {
 
 	public function register() {
 		$this->load->model('User_Model');

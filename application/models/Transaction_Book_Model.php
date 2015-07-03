@@ -14,7 +14,7 @@ class Transaction_Book_Model extends CI_Model {
 		$this->transaction_id   = $transaction_id;
 		$this->book_id  		= $book_id;
 		$this->db->insert('transaction_book', $this);
-		echo $this->db->insert_id();
+		return $this->db->insert_id();
 	}
 
 	public function get_all_books_with_transaction_id($transaction_id)

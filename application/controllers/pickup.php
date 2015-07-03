@@ -1,5 +1,5 @@
 <?php
-class pickup extends CI_Controller {
+class Pickup extends CI_Controller {
 	public function index() {
 		$this->load->model('User_Address_Model');
 

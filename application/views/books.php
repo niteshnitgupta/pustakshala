@@ -38,7 +38,7 @@
 							<a id="appbar-sidenav-hide" class="mui-hidden-xs size-21"><i class="ion-ios-keypad"></i> </a> <a class="appbar-brand">BOOK S</a>
 						</td>
 						<td class="mui-text-right">
-							<a class="mui-btn btn-accent" href="https://github.com/muicss/mui" style="margin-top:-5px;">Cart</a>
+							<a class="mui-btn btn-accent" href="https://github.com/muicss/mui" style="margin-top:-5px; background-color:#2196f3"><?php if($this->session->has_userdata("username")){echo $this->session->userdata("username");} ?></a>
 							<div class="mui-dropdown">
 								<a id="appbar-more-vert" data-mui-toggle="dropdown" class="size-24" style="margin-top:15px;"><i class="ion-android-more-vertical"></i> </a>
 								<ul class="mui-dropdown-menu mui-dropdown-menu-right">
@@ -105,7 +105,10 @@
 			                    </div>
 			                    <div class="card-content">
 			                        <span class="card-title activator grey-text text-darken-4"> <?php echo $book->title; ?> <i class="mdi-navigation-more-vert right"></i></span>
-			                        <p><a>Price <?php echo $book->price; ?> points</a><i class="mdi-action-done-all right" style='color: #2196F3;'></i></p>
+			                        <p>
+			                        	<a>Price <?php echo $book->price; ?> points</a>
+			                        	<i class="mdi-action-shopping-cart right" style='color: #2196F3; cursor:pointer;' onclick="window.location.href='../checkout?book=<?php echo $book->id; ?>'"></i>
+			                        </p>
 			                    </div>
 			                    <div class="card-reveal">
 			                        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?> <i class="mdi-navigation-close right"></i></span><br />
@@ -247,6 +250,13 @@
 	<script src="../js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
+	<?php
+		if (! $this->session->has_userdata("username")) {
+			?>
+			$.removeCookie('userid',{path: '/book' });
+			<?php
+		}
+	?>
 	function IsEmail(email) {
 		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 		return regex.test(email);
